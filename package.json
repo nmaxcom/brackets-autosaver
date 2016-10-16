@@ -1,11 +1,13 @@
 {
   "name": "brackets-autosaver",
-  "version": "gi0.9.1",
-  "description": "Brackets extension to save your work as you type (instantly!). Perfect for file watchers",
+  "title":"Autosave every edit automatically.",
+  "version": "1.0.1",
+  "description": "Saves your work as you type (automagically!). No need to press commands or switch windows. Perfect for file watchers",
+  "homepage": "https://github.com/nmaxcom/brackets-autosaver",
   "main": "main.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "engines": {
+        "brackets": ">=1.0.0"
+    },
   "author": "Carles Alcolea",
-  "license": "ISC"
+  "license": "MIT"
 }
