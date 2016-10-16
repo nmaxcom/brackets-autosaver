@@ -1,14 +1,14 @@
 # brackets-autosaver
 **Finally!**
 
-A **Brackets** plugin that saves your file **as you type**. No need to constantly press Ctrl/CMD + S. It helps you achieve a perfect workflow with file watchers (*Gulp, Grunt, npm, CodeKit*...).
+A **Brackets** extension that saves your file **as you type**. No need to constantly press Ctrl/CMD + S. It helps you achieve a perfect workflow with file watchers (*Gulp, Grunt, npm, CodeKit*...).
 
 Simple demo gif:
 
 ![brackets-autosaver](img/demo.gif)
 
 ## How does it work?
-Brackets-autosaver hooks to key presses. To avoid triggering a file save command on every-single-keypress the extension waits **200ms** from the **last** key pulsation.
+Brackets-autosaver hooks to key presses. To avoid triggering a file save command on every-single-keypress the extension waits **400ms** from the **last** key pulsation.
 
 So once you're finished typing a few words or a simple correction, **then** it saves the document (always the one you just edited).
 
