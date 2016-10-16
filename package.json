@@ -1,11 +1,11 @@
 {
   "name": "brackets-autosaver",
   "version": "gi0.9.1",
-  "description": "Brackets plugin to save your work as you type (instantly!). Perfect for file watchers",
+  "description": "Brackets extension to save your work as you type (instantly!). Perfect for file watchers",
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Carles Alcolea",
   "license": "ISC"
 }
