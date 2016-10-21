@@ -21,12 +21,14 @@ define(function(req, exp, mod) {
             toggle(this, !this.getChecked());
         });
     if(!autoSaveOnSave) {
+        commandOnSave.setChecked(false);
         autoSavePrefs.set('on_save', false);
         autoSavePrefs.save();
+    } else {
+        commandOnSave.setChecked(true);
     }
 
-    // Menus.getMenu(Menus.AppMenuBar.FILE_MENU).addMenuDivider();
-    Menus.getMenu(Menus.AppMenuBar.FILE_MENU).addMenuItem(autosave_id,null,Menus.LAST_IN_SECTION, Menus.MenuSection.FILE_SAVE_COMMANDS);
+    Menus.getMenu(Menus.AppMenuBar.FILE_MENU).addMenuItem(autosave_id, null, Menus.LAST_IN_SECTION, Menus.MenuSection.FILE_SAVE_COMMANDS);
 
     function toggle(command, fromCheckbox) {
         var newValue = (typeof fromCheckbox === 'undefined') ? autoSaveOnSave : fromCheckbox;
