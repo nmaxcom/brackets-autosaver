@@ -3,16 +3,15 @@
 define(function(req, exp, mod) {
     'use strict';
 
-    /***************************/
-    /* Only configuration part */
-    var waitingPeriod = 400;    // ms to wait before saving since last keypress
-    /***************************/
+    // ms to wait before saving since last keypress
+    var waitingPeriod = 400;
 
     var timerHandler       = 0,
         CommandManager     = brackets.getModule("command/CommandManager"),
         Commands           = brackets.getModule('command/Commands'),
         Menus              = brackets.getModule("command/Menus"),
         KBM                = brackets.getModule("command/KeyBindingManager"),
+        Editor             = brackets.getModule("editor/EditorManager"),
         PreferencesManager = brackets.getModule('preferences/PreferencesManager'),
         autoSavePrefs      = PreferencesManager.getExtensionPrefs('autoSavePrefs'),
         autoSaveOnSave     = autoSavePrefs.get('on_save') || false,
@@ -41,8 +40,15 @@ define(function(req, exp, mod) {
         if(autoSavePrefs.get('on_save')) {
             if(timerHandler) clearTimeout(timerHandler);
             timerHandler = setTimeout(function() {
-                // Saves the given file. If no file specified, assumes the current document.
-                CommandManager.execute(Commands.FILE_SAVE);
+                //console.log(Editor.getFocusedEditor());
+                if(Editor.getFocusedEditor() &&
+                    event.keyIdentifier != 'Alt' &&
+                    event.keyIdentifier != 'Shift' &&
+                    event.keyIdentifier != 'Control' &&
+                    event.keyIdentifier != 'Meta') {
+                    // Saves the given file. If no file specified, assumes the current document.
+                    CommandManager.execute(Commands.FILE_SAVE);
+                }
             }, waitingPeriod);
         }
     });
