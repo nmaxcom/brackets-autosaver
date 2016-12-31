@@ -3,18 +3,20 @@
 define(function(req, exp, mod) {
     'use strict';
 
-    // ms to wait before saving since last keypress
+    // Amount of ms to wait before saving since last keypress
     var waitingPeriod = 400;
+    var keysToIgnore  = ['Alt', 'Shift', 'Control', 'Meta'];
+    var timerHandler  = 0;
 
-    var timerHandler       = 0,
-        CommandManager     = brackets.getModule("command/CommandManager"),
-        Commands           = brackets.getModule('command/Commands'),
+    // Load all needed modules and other stuff
+    var CommandManager     = brackets.getModule("command/CommandManager"),
+        Commands           = brackets.getModule("command/Commands"),
         Menus              = brackets.getModule("command/Menus"),
         KBM                = brackets.getModule("command/KeyBindingManager"),
         Editor             = brackets.getModule("editor/EditorManager"),
         CodeHintMgr        = brackets.getModule("editor/CodeHintManager"),
-        PreferencesManager = brackets.getModule('preferences/PreferencesManager'),
-        autoSavePrefs      = PreferencesManager.getExtensionPrefs('autoSavePrefs'),
+        PreferencesManager = brackets.getModule("preferences/PreferencesManager"),
+        autoSavePrefs      = PreferencesManager.getExtensionPrefs("autoSavePrefs"),
         autoSaveOnSave     = autoSavePrefs.get('on_save') || false,
         autosave_id        = 'pref_auto',
         commandOnSave      = CommandManager.register('Enable auto saving', autosave_id, function() {
@@ -36,21 +38,14 @@ define(function(req, exp, mod) {
         autoSavePrefs.set('on_save', newValue);
         autoSavePrefs.save();
     }
-    
+
     KBM.addGlobalKeydownHook(function(event) {
         if(autoSavePrefs.get('on_save')) {
             if(timerHandler) clearTimeout(timerHandler);
             timerHandler = setTimeout(function() {
-                //console.log(Editor.getFocusedEditor());
-                if(Editor.getFocusedEditor() &&
-                    // Prevent saving if code hint modal is being shown
-                    !CodeHintMgr.isOpen() &&
-                    event.keyIdentifier != 'Alt' &&
-                    event.keyIdentifier != 'Shift' &&
-                    event.keyIdentifier != 'Control' &&
-                    event.keyIdentifier != 'Meta')
-                    {
-                    // Saves the given file. If no file specified, assumes the current document.
+                // If main editor is focused and code hint modal not showing and control keys not pressed
+                if(Editor.getFocusedEditor() && !CodeHintMgr.isOpen() && keysToIgnore.indexOf(event.keyIdentifier) == -1) {
+                    // We save the given file. If no file specified, assumes the current document.
                     CommandManager.execute(Commands.FILE_SAVE);
                 }
             }, waitingPeriod);
