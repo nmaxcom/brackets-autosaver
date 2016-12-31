@@ -12,6 +12,7 @@ define(function(req, exp, mod) {
         Menus              = brackets.getModule("command/Menus"),
         KBM                = brackets.getModule("command/KeyBindingManager"),
         Editor             = brackets.getModule("editor/EditorManager"),
+        CodeHintMgr        = brackets.getModule("editor/CodeHintManager"),
         PreferencesManager = brackets.getModule('preferences/PreferencesManager'),
         autoSavePrefs      = PreferencesManager.getExtensionPrefs('autoSavePrefs'),
         autoSaveOnSave     = autoSavePrefs.get('on_save') || false,
@@ -35,17 +36,20 @@ define(function(req, exp, mod) {
         autoSavePrefs.set('on_save', newValue);
         autoSavePrefs.save();
     }
-
+    
     KBM.addGlobalKeydownHook(function(event) {
         if(autoSavePrefs.get('on_save')) {
             if(timerHandler) clearTimeout(timerHandler);
             timerHandler = setTimeout(function() {
                 //console.log(Editor.getFocusedEditor());
                 if(Editor.getFocusedEditor() &&
+                    // Prevent saving if code hint modal is being shown
+                    !CodeHintMgr.isOpen() &&
                     event.keyIdentifier != 'Alt' &&
                     event.keyIdentifier != 'Shift' &&
                     event.keyIdentifier != 'Control' &&
-                    event.keyIdentifier != 'Meta') {
+                    event.keyIdentifier != 'Meta')
+                    {
                     // Saves the given file. If no file specified, assumes the current document.
                     CommandManager.execute(Commands.FILE_SAVE);
                 }
