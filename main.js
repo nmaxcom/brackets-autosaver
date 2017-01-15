@@ -1,7 +1,6 @@
 /*global define, $, brackets, window, document, clearTimeout, setTimeout, localStorage */
 
 // TODO: add tags to github
-// TODO: alinear $("div.autosaveconig.template.modal.instance.in > div.modal-footer > button:nth-child(1)").attr("style","margin-bottom:0")
 
 define(function(require, exp, mod) {
     'use strict';
