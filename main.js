@@ -1,18 +1,17 @@
 /*global define, $, brackets, window, document, clearTimeout, setTimeout, localStorage */
 
-// TODO: add tags to github
-
 define(function(require, exp, mod) {
     'use strict';
 
-    /* MIX VARIABLES */
+    /* --- CONFIGURATION --- */
     var localcfg = {
         time        : 400,       // Amount of ms to wait by default
-        max         : 1000000,   // max value
-        min         : 50,        // min value
+        max         : 1000000,   // max waiting ms in config
+        min         : 50,        // min value ms in config
         keysToIgnore: ['Alt', 'Shift', 'Control', 'Meta'],
         timerHandler: 0
     };
+
 
     /* MODULE LOADING */
     var CommandManager     = brackets.getModule("command/CommandManager"),
