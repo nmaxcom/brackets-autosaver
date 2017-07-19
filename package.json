@@ -1,7 +1,7 @@
 {
   "name": "brackets-autosaver",
   "title": "Autosave every edit!",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "Saves your work as you type (automagically!). No need to press commands or switch windows. Perfect for file watchers",
   "homepage": "https://github.com/nmaxcom/brackets-autosaver",
   "main": "main.js",
