@@ -24,6 +24,3 @@ Nope. You can turn this feature on and off easily from the File menu. So just ch
 
 ## How to install this awesome thing?
 Like any other Brackets extension. Either look for it within Brackets extension manager or download this repo and drop it on Brackets.
-
-
-**Feel free to open any issues, I'll take care of them.**
