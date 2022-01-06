@@ -1,3 +1,5 @@
+## This repo is no longer maintained and the extension may not work correctly or at all. You are welcome to fork it and pick it up where I left it. Good luck!
+
 # brackets-autosaver
 
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT)
