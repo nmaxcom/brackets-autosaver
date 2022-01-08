@@ -8,7 +8,7 @@
 
 **Finally!**
 
-A **Brackets** extension that saves your file **as you type**. No need to constantly press Ctrl/CMD + S. It helps you achieve a perfect workflow with file watchers (*Gulp, Grunt, npm, CodeKit*...).
+A **Brackets** extension that saves your file **as you type**. No need to constantly press Ctrl/CMD + S. It helps you achieve a perfect workflow with file watchers (*Gulp, Grunt, npm, CodeKit*...). Almost 100k installs.
 
 Simple demo gif:
 
