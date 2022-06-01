@@ -1,4 +1,4 @@
-## This repo is no longer maintained and the extension may not work correctly or at all. You are welcome to fork it and pick it up where I left it. Good luck!
+## This repo is no longer maintained and the extension may not work correctly or at all. Please fork it and pick it up where I left it for the next gen of coders. Do it!! Good luck!
 
 # brackets-autosaver
 
